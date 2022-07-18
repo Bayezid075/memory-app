@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 const app = express();
+import PostRoute from "./routes/Post.js";
+app.use("/post", PostRoute); // /post is sufixx of route
 
 app.use(bodyParser.json({ limit: "30mb", extended: "true" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: "true" }));
@@ -18,4 +20,4 @@ mongoose
   .then(() =>
     app.listen(PORT, () => console.log(`Server Running at Port ${PORT} `))
   )
-  .catch((error) => console.log(error.message));
+  .catch((error) => console.log(error));
